@@ -28,3 +28,24 @@ Feature: Email test
     And Snapshot "Received"
     When Log out
     Then Email login page is opened
+
+  Scenario: Block level 3
+    Given Go to the email website
+    And Email login page is opened
+    And Snapshot "login page"
+    When Log in as test user
+    Then Email inbox is opened
+    And Snapshot "Inbox"
+    When Click write new email button
+    Then New email page is visible
+    And Snapshot "New mail"
+    When Fill in email
+    And Snapshot "Filled in"
+    And Add attachment
+    And Snapshot "Added"
+    And Send email
+    And Snapshot "Sent"
+    Then Email is received
+    And Snapshot "Received"
+    When Log out
+    Then Email login page is opened

@@ -50,6 +50,13 @@ When('Fill in email', async function (this: ICustomWorld) {
   await page.locator('[id="subject_input"]').fill(config.testID);
 });
 
+When('Add attachment', async function (this: ICustomWorld) {
+  const page = this.page!;
+  await page.locator('[id="mc_attachments_add_a"]').click();
+  await page.locator('[id="mc_attachments_add"]').setInputFiles('test.txt');
+  await page.locator('text=test.txt').click();
+});
+
 When('Send email', async function (this: ICustomWorld) {
   const page = this.page!;
   await page.locator('[id="qa_email_send_upper"]').click()
